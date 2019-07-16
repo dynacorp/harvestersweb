@@ -1,0 +1,153 @@
+<div [@routerTransition]>
+    <div class="content">
+        <!-- Animated -->
+        <div class="animated fadeIn">
+            <!-- Widgets  -->
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-xl-12">
+                                    <div class="card br-0">
+                                        <div class="card-body user-section">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                    <a class="nav-item nav-link active show quater message-tab" id="custom-nav-comment-tab" data-toggle="tab" href="#custom-nav-comment" role="tab" aria-controls="custom-nav-comment" aria-selected="true">Giving</a>
+                                                </div>
+                                            </nav>
+                                            <div id="nav-tabContent" class="tab-content">
+                                                <div class="container tab-pane fade active show" id="custom-nav-video" role="tabpanel" aria-labelledby="custom-nav-video">
+                                                    <div class="exxrow giving-opt">
+                                                        <h6>Giving Options</h6>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Giving Type</label>
+                                                                    <input type="email" class="form-control message-textarea">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label">Brief description/purpose of give (optional)</label>
+                                                                    <textarea class="form-control message-textarea" rows="7"></textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Donators Name </label>
+                                                                    <input type="email" class="form-control message-textarea">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Date</label>
+                                                                    <div class="input-group mb-2 message-textarea">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text message-textarea"><i class="far fa-calendar-check color-primary"></i></div>
+                                                                        </div>
+                                                                        <input type="text" class="form-control message-textarea">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label">Description</label>
+                                                                    <textarea class="form-control message-textarea" rows="7"></textarea>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Amount (optional)</label>
+                                                                    <div class="input-group mb-2 message-textarea">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text message-textarea"><i class="far fa-credit-card color-primary"></i></div>
+                                                                        </div>
+                                                                        <input type="text" class="form-control message-textarea">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Target Amount (optional)</label>
+                                                                    <div class="input-group mb-2 message-textarea">
+                                                                        <div class="input-group-prepend">
+                                                                            <div class="input-group-text message-textarea"><i class="far fa-credit-card color-primary"></i></div>
+                                                                        </div>
+                                                                        <input type="text" class="form-control message-textarea">
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
+                                        </div>
+                                    </div><!-- /.card -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-4">
+                    <div style="background: white; border-top-left-radius: 10px; border-top-right-radius: 10px">
+                        <ul class="nav nav-pills filtertop" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active ft12" id="pills-home-tab" data-toggle="pill"  role="tab" aria-selected="true">All</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-profile-tab" data-toggle="pill"  role="tab" aria-selected="false">Tithe</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-contact-tab" data-toggle="pill" role="tab" aria-selected="false">Offering</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-profile-tab" data-toggle="pill"  role="tab" aria-selected="false">Welfare</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-contact-tab" data-toggle="pill" role="tab" aria-selected="false">Others</a>
+                            </li>
+                            <li class="nav-item" style="max-width: 34px;">
+                                <a class="nav-link ft12" style="padding: 5px 9px;" role="tab"><img src="assets/img/filter.svg" /></a>
+                            </li>
+                        </ul>
+
+                        <form class="frbody">
+                            <div class="form-group mb0">
+                                <input type="email" class="form-control find-request" placeholder="Find Message">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <div style="height: 27em; overflow: scroll;">
+                            <div class="card-body">
+                            <h6 class="upcoming-title">Upcoming Event</h6>
+                            <div class="card text-black" style="    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);">
+                                <div class="card-body" style="text-align: center">
+                                    <div class="card-center pt-1 float-center">
+                                        <p class="mt-1 m-0 give-total">Total Donations</p>
+                                        <h3 class="mb-0 fw-r">
+                                            <span class="count">505,640.94</span>
+                                        </h3><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" style="box-shadow: none; border-bottom: 1px solid lightgrey;" *ngFor="let gives of gives">
+                                <div class="card-body" style="padding: 0px">
+                                    <div class="exrow">
+                                        <div class="media-body">
+                                            <h2 class="give-title">Building Project<span class="blog-time" style="color: #95989a">N{{gives.amount | number}}</span></h2>
+                                            <h2 class="program-loc">09-09-2018</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .animated -->
+    </div>
+</div>

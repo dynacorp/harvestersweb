@@ -1,0 +1,136 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group">
+        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-dashboard"></i>&nbsp;
+            <span>{{ 'Dashboard' | translate }}</span>
+        </a>
+        <a [routerLink]="['/message']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fas fa-scroll"></i>&nbsp;
+            <span>{{ 'Message' | translate }}</span>
+        </a>
+        <a [routerLink]="['/give']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fa fa-cogs"></i>&nbsp;
+            <span>{{ 'Give' | translate }}</span>
+        </a>
+        <a [routerLink]="['/events']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon far fa-calendar-alt"></i>&nbsp;
+            <span>{{ 'Program or Events' | translate }}</span>
+        </a>
+        <a [routerLink]="['/comments']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fas fa-comment"></i>&nbsp;
+            <span>{{ 'Comments' | translate }}</span>
+        </a>
+        <a [routerLink]="['/subscription']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon far fa-calendar-check"></i>&nbsp;
+            <span>{{ 'Subscription' | translate }}</span>
+        </a>
+        <a [routerLink]="['/testimonies']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fas fa-comment-medical"></i>&nbsp;
+            <span>{{ 'Testimonies' | translate }}</span>
+        </a>
+        <a [routerLink]="['/prayer-request']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fas fa-book-reader"></i>&nbsp;
+            <span>{{ 'Prayer Request' | translate }}</span>
+        </a>
+        <a [routerLink]="['/counselling']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fas fa-user-friends"></i>&nbsp;
+            <span>{{ 'Councelling' | translate }}</span>
+        </a>
+
+        <a [routerLink]="['/feedback']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fas fa-poll-h"></i>&nbsp;
+            <span>{{ 'Feedback' | translate }}</span>
+        </a>
+        <a [routerLink]="['/enquiries']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fas fa-question-circle"></i>&nbsp;
+            <span>{{ 'Enquiries' | translate }}</span>
+        </a>
+        <a [routerLink]="['/blog']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="menu-icon fa fa-cogs"></i>&nbsp;
+            <span>{{ 'Blog' | translate }}</span>
+        </a>
+
+        <div class="header-fields">
+            <a (click)="rltAndLtr()" class="list-group-item">
+                <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
+            </a>
+            <div class="nested-menu">
+                <a class="list-group-item" (click)="addExpandClass('languages')">
+                    <span><i class="fa fa-language"></i>&nbsp; {{ 'Language' | translate }} <b class="caret"></b></span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'languages'">
+                    <ul class="submenu">
+                        <li>
+                            <a href="javascript:void(0)" (click)="changeLang('en')">
+                                {{ 'English' | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changeLang('fr')">
+                                {{ 'French' | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changeLang('ur')">
+                                {{ 'Urdu' | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changeLang('es')">
+                                {{ 'Spanish' | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changeLang('it')">
+                                {{ 'Italian' | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changeLang('fa')">
+                                {{ 'Farsi' | translate }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" (click)="changeLang('de')">
+                                {{ 'German' | translate }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+            <div class="nested-menu">
+                <a class="list-group-item" (click)="addExpandClass('profile')">
+                    <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
+                </a>
+                <li class="nested" [class.expand]="showMenu === 'profile'">
+                    <ul class="submenu">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-user"></i> {{ 'Profile' | translate }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-envelope"></i> {{ 'Inbox' | translate }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">
+                                <span><i class="fa fa-fw fa-gear"></i> {{ 'Settings' | translate }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/login']" (click)="onLoggedout()">
+                                <span><i class="fa fa-fw fa-power-off"></i> {{ 'Log Out' | translate }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </div>
+    <div class="toggle-button navbar-toggler" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+        <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
+        <span>{{ 'Collapse Sidebar' | translate }}</span>
+    </div>
+</nav>

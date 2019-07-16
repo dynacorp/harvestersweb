@@ -1,0 +1,437 @@
+<div [@routerTransition]>
+    <div class="content">
+        <!-- Animated -->
+        <div class="animated fadeIn">
+            <!-- Widgets  -->
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-xl-12">
+                                    <div class="card br-0">
+                                        <div class="card-body user-section">
+                                            <nav>
+                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                    <a class="nav-item nav-link active show quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-video-tab" data-toggle="tab" href="#custom-nav-video" role="tab" aria-controls="custom-nav-video" aria-selected="true"><i class="fas fa-film mr10"></i> Video Content</a>
+                                                    <a class="nav-item nav-link quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-audio-tab" data-toggle="tab" href="#custom-nav-audio" role="tab" aria-controls="custom-nav-audio" aria-selected="false"><i class="fas fa-file-audio mr10"></i> Audio Content</a>
+                                                    <a class="nav-item nav-link quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-book-tab" data-toggle="tab" href="#custom-nav-book" role="tab" aria-controls="custom-nav-book" aria-selected="false"><i class="fas fa-book mr10"></i> Book Content</a>
+                                                    <a class="nav-item nav-link quater message-tab" id="custom-nav-post-tab" data-toggle="tab" href="#custom-nav-post" role="tab" aria-controls="custom-nav-post" aria-selected="false"><i class="fas fa-list-alt mr10"></i> Post</a>
+                                                </div>
+                                            </nav>
+                                            <div id="nav-tabContent" class="tab-content">
+
+
+                                                <!--VIDEO-->
+                                                <div class="container tab-pane fade active show" id="custom-nav-video" role="tabpanel" aria-labelledby="custom-nav-video">
+                                                    <div class="exxrow giving-opt">
+                                                        <h6>Video Content</h6>
+                                                    </div>
+                                                    <form [formGroup]="videoForm" (ngSubmit)="onSubmit('videoForm')">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Title</label>
+                                                                    <input type="text" class="form-control message-textarea" formControlName="title" [ngClass]="{ 'is-invalid': videosubmitted && v.title.errors }">
+                                                                </div>
+                                                                <div class="exrow">
+                                                                    <div class="form-group form-check">
+                                                                        <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                        <label class="form-check-label message-label" >Free</label>
+                                                                    </div>
+                                                                    <div class="form-group form-check">
+                                                                        <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                        <label class="form-check-label message-label" >Paid</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Authors Name</label>
+                                                                    <input type="text" class="form-control message-textarea" formControlName="authorsname" [ngClass]="{ 'is-invalid': videosubmitted && v.authorsname.errors }">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Authors Name Title</label>
+                                                                    <input type="text" class="form-control message-textarea" formControlName="authornametitle" [ngClass]="{ 'is-invalid': videosubmitted && v.authornametitle.errors }">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Upload Video</label>
+                                                                    <div class="message-postImage message-upload" >
+                                                                        <div class="inputdiv">
+                                                                            <input name="importvideo" formControlName="importvideo" [ngClass]="{ 'is-invalid': videosubmitted && v.importvideo.errors }" type="file" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div *ngIf="videosubmitted && v.importvideo.errors" class="invalid-feedback2">
+                                                                        <div *ngIf="v.importvideo.errors.required">required</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="exrow">
+                                                                    <div class="form-group form-check">
+                                                                        <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                        <label class="form-check-label message-label" style="width: 5rem">Super Admin</label>
+                                                                    </div>
+                                                                    <div class="form-group form-check">
+                                                                        <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                        <label class="form-check-label message-label" style="width: 5rem">Branch Admin</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label">Description</label>
+                                                                    <textarea class="form-control message-textarea" rows="7" formControlName="description" [ngClass]="{ 'is-invalid': videosubmitted && v.description.errors }"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Video Thumbnail</label>
+                                                                    <!-- <textarea rows="5" class="events-control"></textarea> -->
+                                                                    <div class="message-postImage message-upload" >
+                                                                        <div class="inputdiv">
+                                                                            <input name="videothumbnail" formControlName="videothumbnail" [ngClass]="{ 'is-invalid': videosubmitted && v.videothumbnail.errors }" type="file" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div *ngIf="videosubmitted && v.videothumbnail.errors" class="invalid-feedback2">
+                                                                        <div *ngIf="v.videothumbnail.errors.required">required</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+
+                                                <!--AUDIO-->
+                                                <div class="container tab-pane fade" id="custom-nav-audio" role="tabpanel" aria-labelledby="custom-nav-audio">
+                                                    <div class="exxrow giving-opt">
+                                                        <h6>Audio Content</h6>
+                                                    </div>
+                                                    <form [formGroup]="audioForm" (ngSubmit)="onSubmit('audioForm')">
+                                                        <div class="row">
+                                                            <div class="col-4">
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Title of Audio</label>
+                                                                        <input type="text" class="form-control message-textarea" formControlName="titleofaudio" [ngClass]="{ 'is-invalid': audiosubmitted && a.titleofaudio.errors }">
+                                                                    </div>
+                                                                    <div class="exrow">
+                                                                        <div class="form-group form-check">
+                                                                            <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                            <label class="form-check-label message-label" >Free</label>
+                                                                        </div>
+                                                                        <div class="form-group form-check">
+                                                                            <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                            <label class="form-check-label message-label" >Paid</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Authors Name</label>
+                                                                        <input type="text" class="form-control message-textarea" formControlName="authorsname" [ngClass]="{ 'is-invalid': audiosubmitted && a.authorsname.errors }">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Authors Name Title</label>
+                                                                        <input type="text" class="form-control message-textarea" formControlName="authornametitle" [ngClass]="{ 'is-invalid': audiosubmitted && a.authornametitle.errors }">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Import Audio</label>
+                                                                        <div class="message-postImage message-upload" >
+                                                                            <div class="inputdiv">
+                                                                                <input name="importaudio" formControlName="importaudio" [ngClass]="{ 'is-invalid': audiosubmitted && a.importaudio.errors }" type="file" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div *ngIf="audiosubmitted && a.importaudio.errors" class="invalid-feedback2">
+                                                                            <div *ngIf="a.importaudio.errors.required">required</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="exrow">
+                                                                        <div class="form-group form-check">
+                                                                            <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                            <label class="form-check-label message-label" style="width: 5rem">Super Admin</label>
+                                                                        </div>
+                                                                        <div class="form-group form-check">
+                                                                            <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                            <label class="form-check-label message-label" style="width: 5rem">Branch Admin</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Duration</label>
+                                                                        <input type="time" class="form-control message-textarea" formControlName="duration" [ngClass]="{ 'is-invalid': audiosubmitted && a.duration.errors }">
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col-4">
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Audio Thumbnail</label>
+                                                                        <!-- <textarea rows="5" class="events-control"></textarea> -->
+                                                                        <div class="message-postImage message-upload" >
+                                                                            <div class="inputdiv">
+                                                                                <input name="audiothumbnail" formControlName="audiothumbnail" [ngClass]="{ 'is-invalid': audiosubmitted && a.audiothumbnail.errors }" type="file" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div *ngIf="audiosubmitted && a.audiothumbnail.errors" class="invalid-feedback2">
+                                                                            <div *ngIf="a.audiothumbnail.errors.required">required</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label">Description</label>
+                                                                        <textarea class="form-control message-textarea" rows="7" formControlName="description" [ngClass]="{ 'is-invalid': audiosubmitted && a.description.errors }"></textarea>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+
+
+                                                <!--BOOKS-->
+                                                <div class="container tab-pane fade" id="custom-nav-book" role="tabpanel" aria-labelledby="custom-nav-book">
+                                                    <div class="exxrow giving-opt">
+                                                        <h6>Book Contents</h6>
+                                                    </div>
+                                                    <form [formGroup]="bookForm" (ngSubmit)="onSubmit('bookForm')">
+                                                        <div class="row">
+                                                        <div class="col-5">
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Book Title</label>
+                                                                <input type="text" class="form-control message-textarea" formControlName="booktitle" [ngClass]="{ 'is-invalid': booksubmitted && b.booktitle.errors }">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label">Description</label>
+                                                                <textarea class="form-control message-textarea" rows="7" formControlName="description" [ngClass]="{ 'is-invalid': booksubmitted && b.description.errors }"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Number of Pages</label>
+                                                                <input type="number" class="form-control message-textarea" formControlName="numberofpages" [ngClass]="{ 'is-invalid': booksubmitted && b.numberofpages.errors }">
+                                                            </div>
+                                                            <div class="exrow">
+                                                                <div class="form-group form-check">
+                                                                    <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                    <label class="form-check-label message-label" >Free</label>
+                                                                </div>
+                                                                <div class="form-group form-check">
+                                                                    <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                    <label class="form-check-label message-label" >Paid</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Public Date</label>
+                                                                <input type="date" class="form-control message-textarea" formControlName="publicdate" [ngClass]="{ 'is-invalid': booksubmitted && b.publicdate.errors }">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Cover Image</label>
+                                                                <!-- <textarea rows="5" class="events-control"></textarea> -->
+                                                                <div class="message-postImage message-upload" >
+                                                                    <div class="inputdiv">
+                                                                        <input name="coverimage" formControlName="coverimage" [ngClass]="{ 'is-invalid': booksubmitted && b.coverimage.errors }" type="file" />
+                                                                    </div>
+                                                                </div>
+                                                                <div *ngIf="booksubmitted && b.coverimage.errors" class="invalid-feedback2">
+                                                                    <div *ngIf="b.coverimage.errors.required">required</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Authors Name</label>
+                                                                <input type="email" class="form-control message-textarea" formControlName="authorsname" [ngClass]="{ 'is-invalid': booksubmitted && b.authorsname.errors }">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Image of Author</label>
+                                                                <!-- <textarea rows="5" class="events-control"></textarea> -->
+                                                                <div class="message-postImage message-upload" >
+                                                                    <div class="inputdiv">
+                                                                        <input name="imageofauthor" formControlName="imageofauthor" [ngClass]="{ 'is-invalid': booksubmitted && b.imageofauthor.errors }" type="file" />
+                                                                    </div>
+                                                                </div>
+                                                                <div *ngIf="booksubmitted && b.imageofauthor.errors" class="invalid-feedback2">
+                                                                    <div *ngIf="b.imageofauthor.errors.required">required</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Title of Author</label>
+                                                                <input type="email" class="form-control message-textarea" formControlName="titleofauthor" [ngClass]="{ 'is-invalid': booksubmitted && b.titleofauthor.errors }">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label">Table of Content</label>
+                                                                <textarea class="form-control message-textarea" rows="7" formControlName="tableofcontent" [ngClass]="{ 'is-invalid': booksubmitted && b.tableofcontent.errors }"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Upload File</label>
+                                                                <div class="message-postImage message-upload" >
+                                                                    <div class="inputdiv">
+                                                                        <input name="uploadfile" formControlName="uploadfile" [ngClass]="{ 'is-invalid': booksubmitted && b.uploadfile.errors }" type="file" />
+                                                                    </div>
+                                                                </div>
+                                                                <div *ngIf="booksubmitted && b.uploadfile.errors" class="invalid-feedback2">
+                                                                    <div *ngIf="b.uploadfile.errors.required">required</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="exrow">
+                                                                <div class="form-group form-check">
+                                                                    <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                    <label class="form-check-label message-label" style="width: 5rem">Super Admin</label>
+                                                                </div>
+                                                                <div class="form-group form-check">
+                                                                    <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                    <label class="form-check-label message-label" style="width: 5rem">Branch Admin</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                        <div class="card-footer">
+                                                            <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+
+                                                <!--POST-->
+                                                <div class="container tab-pane fade" id="custom-nav-post" role="tabpanel" aria-labelledby="custom-nav-post">
+                                                    <div class="exxrow giving-opt">
+                                                        <h6>Giving Options</h6>
+                                                    </div>
+                                                    <form [formGroup]="postForm" (ngSubmit)="onSubmit('postForm')">
+                                                        <div class="row">
+                                                        <div class="col-4">
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Post Image</label>
+                                                                    <!-- <textarea rows="5" class="events-control"></textarea> -->
+                                                                    <div class="message-postImage message-upload" >
+                                                                        <div class="inputdiv">
+                                                                            <input name="thumbnail" formControlName="thumbnail" [ngClass]="{ 'is-invalid': submitted && f.thumbnail.errors }" type="file" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div *ngIf="submitted && f.thumbnail.errors" class="invalid-feedback2">
+                                                                        <div *ngIf="f.thumbnail.errors.required">required</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" for="exampleInputPassword1">Content</label>
+                                                                    <textarea name="content" formControlName="content" [ngClass]="{ 'is-invalid': submitted && f.content.errors }" class="form-control message-textarea" rows="7" cols="9"></textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="message-label" >Title</label>
+                                                                    <input type="text" name="title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" class="form-control message-textarea">
+                                                                </div>
+                                                                <div class="exrow">
+                                                                    <div class="form-group form-check">
+                                                                        <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                        <label class="form-check-label message-label" >Free</label>
+                                                                    </div>
+                                                                    <div class="form-group form-check">
+                                                                        <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
+                                                                        <label class="form-check-label message-label" >Paid</label>
+                                                                    </div>
+                                                                </div>
+                                                        </div>
+                                                        <div class="col-4">
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Church</label>
+                                                                <input type="text" class="form-control message-textarea" name="church" formControlName="church" [ngClass]="{ 'is-invalid': submitted && f.church.errors }">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Branch name</label>
+                                                                <input type="text" class="message-textarea form-control" name="branch" formControlName="branch" [ngClass]="{ 'is-invalid': submitted && f.branch.errors }">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4">
+<!--                                                                <div class="form-group">-->
+<!--                                                                    <label class="message-label" >Book Title</label>-->
+<!--                                                                    <input type="text" class="form-control message-textarea" name="booktitle" formControlName="booktitle" [ngClass]="{ 'is-invalid': submitted && f.booktitle.errors }">-->
+<!--                                                                </div>-->
+                                                        </div>
+                                                    </div>
+                                                        <div class="card-footer">
+                                                            <div class=" form-group">
+                                                                <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+<!--                                        <div class="card-footer">-->
+<!--                                            <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>-->
+<!--                                        </div>-->
+                                    </div><!-- /.card -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-4">
+                    <div style="background: white; border-top-left-radius: 10px; border-top-right-radius: 10px">
+                        <ul class="nav nav-pills filtertop" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active ft12" id="pills-home-tab" data-toggle="pill"  role="tab" aria-selected="true">All</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-profile-tab" data-toggle="pill"  role="tab" aria-selected="false">Video</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-contact-tab" data-toggle="pill" role="tab" aria-selected="false">Audio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-profile-tab" data-toggle="pill"  role="tab" aria-selected="false">Book</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link ft12" id="pills-contact-tab" data-toggle="pill" role="tab" aria-selected="false">Post</a>
+                            </li>
+                            <li class="nav-item" style="max-width: 36px;">
+                                <a class="nav-link ft12" style="padding: 5px 9px;" role="tab"><img src="assets/img/filter.svg" /></a>
+                            </li>
+                        </ul>
+
+                        <div class="frbody">
+                            <div class="form-group mb0">
+                                <input type="email" class="form-control find-request" placeholder="Find Requests">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div style="height: 32em; overflow: scroll;">
+                            <div class="card-body" *ngIf="post">
+                                <div class="card pd020" style="box-shadow: none" *ngFor="let post of post">
+                                    <div class="card-body" style="padding: 0px; font-size: 12px">
+                                        <div class="exrow">
+                                            <img class="align-self-center rounded-circle mr-3" style="width:40px; height:40px;" alt="" src="assets/img/avatar.jpg">
+                                            <div class="media-body">
+                                                <h2 class="blog-name">Pastor Rotimi<span class="blog-time">1 day ago</span></h2>
+                                            </div>
+                                        </div>
+                                        <label class="blog-label">{{post.title}}</label>
+                                        <p class="card-text" style="font-size: 12px; margin-bottom: 10px;">{{post.content}}</p>
+                                    </div>
+                                    <img  [src]="post.thumbnail" class="card-img-top" alt="...">
+                                    <div class="exrow">
+                                        <div class="media-body" style="font-size: 12px">
+                                            <h2 class="blog-actions">
+                                                <i class="fas fa-heart"></i> {{post.likers.length}}
+                                                <span style="margin-left:20px"><i class="fas fa-comment-alt"></i> 120</span>
+                                                <span class="blog-time">SHARE</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>
+                            <div class="card-body" *ngIf="!post">
+                                <div class="forspin">
+                                    <div class="spinner">
+                                        <div class="double-bounce1"></div>
+                                        <div class="double-bounce2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .animated -->
+    </div>
+</div>
