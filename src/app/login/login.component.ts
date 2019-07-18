@@ -51,17 +51,16 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.router.navigate([this.returnUrl]);
-        //     this.authenticationService.login(this.f.email.value, this.f.password.value)
-        //         .pipe(first())
-        //         .subscribe(
-        //             data => {
-        //                 this.router.navigate([this.returnUrl]);
-        //             },
-        //             error => {
-        //                 this.notif.show({message: error, type: 'error'});
-        //                 this.loading = false;
-        //             });
-        // }
+        // this.router.navigate([this.returnUrl]);
+            this.authenticationService.login(this.f.email.value, this.f.password.value)
+                .pipe(first())
+                .subscribe(
+                    data => {
+                        this.router.navigate([this.returnUrl]);
+                    },
+                    error => {
+                        this.notif.show({message: error, type: 'error'});
+                        this.loading = false;
+                    });
     }
 }

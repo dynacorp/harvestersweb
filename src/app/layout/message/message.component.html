@@ -13,10 +13,10 @@
                                         <div class="card-body user-section">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                    <a class="nav-item nav-link active show quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-video-tab" data-toggle="tab" href="#custom-nav-video" role="tab" aria-controls="custom-nav-video" aria-selected="true"><i class="fas fa-film mr10"></i> Video Content</a>
-                                                    <a class="nav-item nav-link quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-audio-tab" data-toggle="tab" href="#custom-nav-audio" role="tab" aria-controls="custom-nav-audio" aria-selected="false"><i class="fas fa-file-audio mr10"></i> Audio Content</a>
-                                                    <a class="nav-item nav-link quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-book-tab" data-toggle="tab" href="#custom-nav-book" role="tab" aria-controls="custom-nav-book" aria-selected="false"><i class="fas fa-book mr10"></i> Book Content</a>
-                                                    <a class="nav-item nav-link quater message-tab" id="custom-nav-post-tab" data-toggle="tab" href="#custom-nav-post" role="tab" aria-controls="custom-nav-post" aria-selected="false"><i class="fas fa-list-alt mr10"></i> Post</a>
+                                                    <a class="nav-item nav-link active show quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-video-tab" data-toggle="tab" href="#custom-nav-video" role="tab" aria-controls="custom-nav-video" aria-selected="true"><i class="fas fa-film mr10"></i> Video <span *ngIf="nowmobile">Content</span></a>
+                                                    <a class="nav-item nav-link quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-audio-tab" data-toggle="tab" href="#custom-nav-audio" role="tab" aria-controls="custom-nav-audio" aria-selected="false"><i class="fas fa-file-audio mr10"></i> Audio <span *ngIf="nowmobile">Content</span></a>
+                                                    <a class="nav-item nav-link quater message-tab" style="border-right: 1px solid lightgray;" id="custom-nav-book-tab" data-toggle="tab" href="#custom-nav-book" role="tab" aria-controls="custom-nav-book" aria-selected="false"><i class="fas fa-book mr10"></i> Book <span *ngIf="nowmobile">Content</span></a>
+                                                    <a class="nav-item nav-link quater message-tab" id="custom-nav-post-tab" data-toggle="tab" href="#custom-nav-post" role="tab" aria-controls="custom-nav-post" aria-selected="false"><i class="fas fa-list-alt mr10"></i> Post <span *ngIf="nowmobile">Content</span></a>
                                                 </div>
                                             </nav>
                                             <div id="nav-tabContent" class="tab-content">
@@ -29,7 +29,7 @@
                                                     </div>
                                                     <form [formGroup]="videoForm" (ngSubmit)="onSubmit('videoForm')">
                                                         <div class="row">
-                                                            <div class="col-4">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="message-label" >Title</label>
                                                                     <input type="text" class="form-control message-textarea" formControlName="title" [ngClass]="{ 'is-invalid': videosubmitted && v.title.errors }">
@@ -78,7 +78,7 @@
                                                                     <textarea class="form-control message-textarea" rows="7" formControlName="description" [ngClass]="{ 'is-invalid': videosubmitted && v.description.errors }"></textarea>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-4">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="message-label" >Video Thumbnail</label>
                                                                     <!-- <textarea rows="5" class="events-control"></textarea> -->
@@ -107,7 +107,7 @@
                                                     </div>
                                                     <form [formGroup]="audioForm" (ngSubmit)="onSubmit('audioForm')">
                                                         <div class="row">
-                                                            <div class="col-4">
+                                                            <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label class="message-label" >Title of Audio</label>
                                                                         <input type="text" class="form-control message-textarea" formControlName="titleofaudio" [ngClass]="{ 'is-invalid': audiosubmitted && a.titleofaudio.errors }">
@@ -156,7 +156,7 @@
                                                                         <input type="time" class="form-control message-textarea" formControlName="duration" [ngClass]="{ 'is-invalid': audiosubmitted && a.duration.errors }">
                                                                     </div>
                                                             </div>
-                                                            <div class="col-4">
+                                                            <div class="col-md-4">
                                                                     <div class="form-group">
                                                                         <label class="message-label" >Audio Thumbnail</label>
                                                                         <!-- <textarea rows="5" class="events-control"></textarea> -->
@@ -190,7 +190,7 @@
                                                     </div>
                                                     <form [formGroup]="bookForm" (ngSubmit)="onSubmit('bookForm')">
                                                         <div class="row">
-                                                        <div class="col-5">
+                                                        <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label class="message-label" >Book Title</label>
                                                                 <input type="text" class="form-control message-textarea" formControlName="booktitle" [ngClass]="{ 'is-invalid': booksubmitted && b.booktitle.errors }">
@@ -230,7 +230,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-5">
+                                                        <div class="col-md-5">
                                                             <div class="form-group">
                                                                 <label class="message-label" >Authors Name</label>
                                                                 <input type="email" class="form-control message-textarea" formControlName="authorsname" [ngClass]="{ 'is-invalid': booksubmitted && b.authorsname.errors }">
@@ -292,7 +292,7 @@
                                                     </div>
                                                     <form [formGroup]="postForm" (ngSubmit)="onSubmit('postForm')">
                                                         <div class="row">
-                                                        <div class="col-4">
+                                                        <div class="col-md-4 col-sm-6">
                                                                 <div class="form-group">
                                                                     <label class="message-label" >Post Image</label>
                                                                     <!-- <textarea rows="5" class="events-control"></textarea> -->
@@ -324,7 +324,7 @@
                                                                     </div>
                                                                 </div>
                                                         </div>
-                                                        <div class="col-4">
+                                                        <div class="col-md-4 col-sm-6">
                                                             <div class="form-group">
                                                                 <label class="message-label" >Church</label>
                                                                 <input type="text" class="form-control message-textarea" name="church" formControlName="church" [ngClass]="{ 'is-invalid': submitted && f.church.errors }">
@@ -334,12 +334,12 @@
                                                                 <input type="text" class="message-textarea form-control" name="branch" formControlName="branch" [ngClass]="{ 'is-invalid': submitted && f.branch.errors }">
                                                             </div>
                                                         </div>
-                                                        <div class="col-4">
-<!--                                                                <div class="form-group">-->
-<!--                                                                    <label class="message-label" >Book Title</label>-->
-<!--                                                                    <input type="text" class="form-control message-textarea" name="booktitle" formControlName="booktitle" [ngClass]="{ 'is-invalid': submitted && f.booktitle.errors }">-->
-<!--                                                                </div>-->
-                                                        </div>
+<!--                                                        <div class="col-4">-->
+<!--&lt;!&ndash;                                                                <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                    <label class="message-label" >Book Title</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                    <input type="text" class="form-control message-textarea" name="booktitle" formControlName="booktitle" [ngClass]="{ 'is-invalid': submitted && f.booktitle.errors }">&ndash;&gt;-->
+<!--&lt;!&ndash;                                                                </div>&ndash;&gt;-->
+<!--                                                        </div>-->
                                                     </div>
                                                         <div class="card-footer">
                                                             <div class=" form-group">
@@ -366,7 +366,7 @@
 
                 <div class="col-lg-4 col-md-4">
                     <div style="background: white; border-top-left-radius: 10px; border-top-right-radius: 10px">
-                        <ul class="nav nav-pills filtertop" id="pills-tab" role="tablist">
+                        <ul class="nav nav-pills filtertop" id="pills-tab" role="tablist" style="justify-content: center">
                             <li class="nav-item">
                                 <a class="nav-link active ft12" id="pills-home-tab" data-toggle="pill"  role="tab" aria-selected="true">All</a>
                             </li>

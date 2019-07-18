@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import {RequestsService} from "../../services/request/requests.service";
-import {first} from "rxjs/operators";
+import {RequestsService} from '../../services/request/requests.service';
+import {first} from 'rxjs/operators';
 
 @Component({
     selector: 'app-tables',
@@ -15,15 +15,15 @@ export class GiveComponent implements OnInit {
     constructor(private request: RequestsService) {}
 
     ngOnInit() {
-        this.request.getGives()
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.gives = data;
-                },
-                error => {
-
-                }
-            );
+        // this.request.getGives()
+        //     .pipe(first())
+        //     .subscribe(
+        //         data => {
+        //             this.gives = data;
+        //         },
+        //         error => {
+        //
+        //         }
+        //     );
     }
 }

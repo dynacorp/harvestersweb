@@ -3032,8 +3032,8 @@ input[type="file"] .btn {
   border-top-right-radius: 5px;
   color: #707070;
   font-weight: 100;
-  padding: 1em .9em;
-  width: 20%;
+  padding: 1em 2em;
+  width: auto;
   text-align: center;
   font-size: 15px;
 }
@@ -3044,6 +3044,7 @@ input[type="file"] .btn {
   position: relative;
   background: #ffe2bd;
   border-bottom: 1px solid lightgrey;
+    width: auto;
 }
 
 .table-stats table th {

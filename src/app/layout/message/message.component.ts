@@ -24,12 +24,17 @@ export class MessageComponent implements OnInit {
     videosubmitted = false;
     post: any;
     body: any;
+    nowmobile = true;
 
     constructor(
         private formBuilder: FormBuilder,
         private request: RequestsService,
         private submitData: PostService,
-        private notif: NotifService) {}
+        private notif: NotifService) {
+        if (window.innerWidth <= 992 ) {
+            this.nowmobile = false;
+        }
+    }
 
     ngOnInit() {
         this.request.getPost()

@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
     collapsed: boolean;
     showMenu: string;
     pushRightClass: string;
+    colsidebar = true;
 
     @Output() collapsedEvent = new EventEmitter<boolean>();
 
@@ -23,6 +24,10 @@ export class SidebarComponent implements OnInit {
                 this.isToggled()
             ) {
                 this.toggleSidebar();
+            }
+
+            if (window.innerWidth <= 992 ) {
+                this.colsidebar = false;
             }
         });
     }

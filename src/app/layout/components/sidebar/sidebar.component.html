@@ -129,8 +129,12 @@
             </div>
         </div>
     </div>
-    <div class="toggle-button navbar-toggler" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+    <div class="toggle-button navbar-toggler" [ngClass]="{collapsed: collapsed}" *ngIf="colsidebar" (click)="toggleCollapsed()">
         <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
         <span>{{ 'Collapse Sidebar' | translate }}</span>
+    </div>
+    <div class="toggle-button navbar-toggler" [ngClass]="{collapsed: collapsed}"  *ngIf="!colsidebar" >
+        <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
+        <span>{{ 'Logout' | translate }}</span>
     </div>
 </nav>
