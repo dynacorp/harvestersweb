@@ -2479,9 +2479,7 @@ footer.site-footer {
 
   .orders {
     overflow: hidden; }
-
-  .order-table .avatar, .order-table .serial {
-    display: none; } }
+ }
 @media (max-width: 575px) {
   #left-panel .navbar {
     display: inherit; }
