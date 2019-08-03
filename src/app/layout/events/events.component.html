@@ -10,109 +10,138 @@
                             <div class="row">
                                 <div class="col-lg-6 col-xl-12">
                                     <div class="card br-0">
-                                        <div class="card-body user-section">
-                                            <nav>
-                                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                    <a class="nav-item nav-link active show quater message-tab" id="custom-nav-comment-tab" data-toggle="tab" href="#custom-nav-comment" role="tab" aria-controls="custom-nav-comment" aria-selected="true">Program or Event</a>
-                                                </div>
-                                            </nav>
-                                            <div id="nav-tabContent" class="tab-content">
-                                                <div class="container tab-pane fade active show" id="custom-nav-video" role="tabpanel" aria-labelledby="custom-nav-video">
-                                                    <div class="exxrow giving-opt">
-                                                        <h6>Create A Program / Event</h6>
+                                        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+                                            <div class="card-body user-section">
+                                                <nav>
+                                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                        <a class="nav-item nav-link active show quater message-tab" id="custom-nav-comment-tab" data-toggle="tab" href="#custom-nav-comment" role="tab" aria-controls="custom-nav-comment" aria-selected="true">Program or Event</a>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-5">
-                                                            <form>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Title</label>
-                                                                    <input type="email" class="form-control message-textarea">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label">Description</label>
-                                                                    <textarea class="form-control message-textarea" rows="7"></textarea>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Poster (image, optional)</label>
-                                                                    <!-- <textarea rows="5" class="form-control"></textarea> -->
-                                                                    <div class="message-postImage" style="padding-top: 58px;">
-                                                                        <button class="message-btn">Import</button>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Date</label>
-                                                                    <div class="input-group mb-2 message-textarea">
-                                                                        <div class="input-group-prepend">
-                                                                            <div class="input-group-text message-textarea"><i class="far fa-calendar-check color-primary"></i></div>
-                                                                        </div>
-                                                                        <input type="text" class="form-control message-textarea">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="exrow">
-                                                                    <div class="form-group col-6" style="padding-left: 0 !important">
-                                                                        <label class="message-label" >Start Time</label>
-                                                                        <div class="input-group mb-2 message-textarea">
-                                                                            <div class="input-group-prepend">
-                                                                                <div class="input-group-text message-textarea"><i class="far fa-clock color-primary"></i></div>
-                                                                            </div>
-                                                                            <input type="text" class="form-control message-textarea">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-group col-6" style="padding-right: 0 !important">
-                                                                        <label class="message-label" >End Time</label>
-                                                                        <div class="input-group mb-2 message-textarea">
-                                                                            <div class="input-group-prepend">
-                                                                                <div class="input-group-text message-textarea"><i class="far fa-clock color-primary"></i></div>
-                                                                            </div>
-                                                                            <input type="text" class="form-control message-textarea">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label">Activities</label>
-                                                                    <textarea class="form-control message-textarea" rows="7"></textarea>
-                                                                </div>
-                                                                <div class="form-group form-check">
-                                                                    <input type="checkbox" class="form-check-input message-textarea" id="exampleCheck1">
-                                                                    <label class="form-check-label message-label" >Pin to Top</label>
-                                                                </div>
-                                                            </form>
+                                                </nav>
+                                                <div id="nav-tabContent" class="tab-content">
+                                                    <div class="container tab-pane fade active show" id="custom-nav-video" role="tabpanel" aria-labelledby="custom-nav-video">
+                                                        <div class="exxrow giving-opt">
+                                                            <h6>Create A Program / Event</h6>
                                                         </div>
-                                                        <div class="col-md-5">
-                                                            <form>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Minister Name</label>
-                                                                    <input type="email" class="form-control message-textarea">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Ministers Picture</label>
-                                                                    <!-- <textarea rows="5" class="form-control"></textarea> -->
-                                                                    <div class="message-postImage" style="padding-top: 58px;">
-                                                                        <button class="message-btn">Import</button>
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Title</label>
+                                                                        <input type="text" class="form-control message-textarea" formControlName="title" [ngClass]="{ 'is-invalid': submitted && v.title.errors }">
                                                                     </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Minister Title</label>
-                                                                    <input type="email" class="form-control message-textarea">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Venue</label>
-                                                                    <div class="input-group mb-2 message-textarea">
-                                                                        <div class="input-group-prepend">
-                                                                            <div class="input-group-text message-textarea"><i class="fas fa-map-marker-alt color-primary"></i></div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label">Description</label>
+                                                                        <textarea class="form-control message-textarea" rows="7" formControlName="description" [ngClass]="{ 'is-invalid': submitted && v.description.errors }"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Poster (image, optional)</label>
+                                                                        <div class="message-postImage message-upload" >
+                                                                            <div class="inputdiv">
+                                                                                <input name="file" formControlName="thumbnail"  type="file" />
+                                                                            </div>
                                                                         </div>
-                                                                        <input type="text" class="form-control message-textarea">
+                                                                        <div *ngIf="submitted && v.thumbnail.errors" class="invalid-feedback2">
+                                                                            <div *ngIf="v.thumbnail.errors.required">required</div>
+                                                                        </div>
+                                                                    </div>
+                                                                        <div class="form-group" style="padding-left: 0 !important">
+                                                                            <label class="message-label" >Start Time</label>
+                                                                            <div class="input-group mb-2 message-textarea">
+                                                                                <div class="input-group-prepend">
+                                                                                    <div class="input-group-text message-textarea"><i class="far fa-clock color-primary"></i></div>
+                                                                                </div>
+                                                                                <input type="date" class="form-control message-textarea" formControlName="end_date" [ngClass]="{ 'is-invalid': submitted && v.end_date.errors }">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group" style="padding-right: 0 !important">
+                                                                            <label class="message-label" >End Time</label>
+                                                                            <div class="input-group mb-2 message-textarea">
+                                                                                <div class="input-group-prepend">
+                                                                                    <div class="input-group-text message-textarea"><i class="far fa-clock color-primary"></i></div>
+                                                                                </div>
+                                                                                <input type="date" class="form-control message-textarea" formControlName="start_date" [ngClass]="{ 'is-invalid': submitted && v.start_date.errors }">
+                                                                            </div>
+                                                                        </div>
+                                                                    <div [formGroup]="actives1">
+                                                                        <div class="form-group">
+                                                                            <label class="message-label">Activities</label>
+                                                                            <textarea class="form-control message-textarea" rows="7" formControlName="activities2" (keyup)="this.formData()" [ngClass]="{ 'is-invalid': submitted && z.errors }"></textarea>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Venue</label>
+                                                                        <div class="input-group mb-2 message-textarea">
+                                                                            <div class="input-group-prepend">
+                                                                                <div class="input-group-text message-textarea"><i class="fas fa-map-marker-alt color-primary"></i></div>
+                                                                            </div>
+                                                                            <input type="text" class="form-control message-textarea" formControlName="venue" [ngClass]="{ 'is-invalid': submitted && v.venue.errors }">
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col-md-5">
+                                                                <div [formGroup]="ministers2">
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Minister's Name</label>
+                                                                        <input type="text" class="form-control message-textarea" formControlName="name" [ngClass]="{ 'is-invalid': submitted && x.name.errors }">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Minister's Image</label>
+                                                                        <div class="message-postImage message-upload" >
+                                                                            <div class="inputdiv">
+                                                                                <input name="image" formControlName="image"  type="file" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div *ngIf="submitted && x.image.errors" class="invalid-feedback2">
+                                                                            <div *ngIf="x.image.errors.required">required</div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="message-label" >Minister's Title</label>
+                                                                        <input type="email" class="form-control message-textarea" formControlName="title" [ngClass]="{ 'is-invalid': submitted && x.title.errors }">
                                                                     </div>
                                                                 </div>
-                                                            </form>
+
+                                                                <div class="exrow form-group">
+                                                                    <div class="col-12">
+                                                                        <label class="row message-label" >Pin to Top (Set to pin event on top screen)</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="true" name="pin_to_top" formControlName="pin_to_top">
+                                                                        <label class="form-check-label message-label" >True</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="false" name="pin_to_top" formControlName="pin_to_top">
+                                                                        <label class="form-check-label message-label" >False</label>
+                                                                    </div>
+                                                                    <div *ngIf="submitted && v.pin_to_top.errors" class="invalid-feedback2">
+                                                                        <div *ngIf="v.pin_to_top.errors.required">required</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="exrow form-group">
+                                                                    <div class="col-12">
+                                                                        <label class="row message-label" >Prioritize (Set to true if highest priority)</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="true" name="prioritize" formControlName="prioritize">
+                                                                        <label class="form-check-label message-label" >True</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="false" name="prioritize" formControlName="prioritize">
+                                                                        <label class="form-check-label message-label" >False</label>
+                                                                    </div>
+                                                                    <div *ngIf="submitted && v.prioritize.errors" class="invalid-feedback2">
+                                                                        <div *ngIf="v.prioritize.errors.required">required</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
-                                        </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
+                                            </div>
+                                        </form>
                                     </div><!-- /.card -->
                                 </div>
 
@@ -145,113 +174,53 @@
                         </li>
                     </ul>
 
-                    <form class="frbody">
+                    <div class="frbody">
                         <div class="form-group mb0">
-                            <input type="email" class="form-control find-request" placeholder="Find Message">
+                            <input type="email" class="form-control find-request" placeholder="Find Event">
                         </div>
-                    </form>
+                    </div>
                     </div>
 
                     <div class="card">
                         <div style="height: 40em; overflow: scroll;">
-                            <div class="card-body">
-                            <h6 class="upcoming-title">Upcoming Event</h6>
-                            <div class="card text-white bg-hands">
-                                <div class="card-body" style="text-align: center">
-                                    <div class="card-center pt-1 float-center">
-                                        <h3 class="mb-0 fw-r">
-                                            <span class="count">#youthforchrist</span>
-                                        </h3><br>
-                                        <p class="text-light mt-1 m-0">TONIGHT  6:00PM</p>
-                                        <p class="text-light mt-1 m-0"><i class="fas fa-map-marker-alt"></i> Ikeja GRA, Lagos</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card pd020" style="box-shadow: none">
-                                <div class="card-body" style="padding: 0px">
-                                    <div class="exrow">
-                                        <img class="align-self-center mr-3" style="width:40px; height:40px;" alt="" src="assets/img/calender.png">
-                                        <div class="media-body">
-                                            <label class="program-label">Spiritual Journey</label>
-                                            <h2 class="program-loc">Ikeja GRA, Lagos <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">6:00pm</span></h2>
-                                            <h2 class="program-loc color-primary">549 attendees<span class="blog-time">Edit</span></h2>
+                           <div class="card-body" *ngIf="events">
+                               <h6 class="upcoming-title">Upcoming Event</h6>
+                                <div class="card text-white bg-hands">
+                                    <div class="card-body" style="text-align: center">
+                                        <div class="card-center pt-1 float-center">
+                                            <h3 class="mb-0 fw-r">
+                                                <span class="p22 count">#youthforchrist</span>
+                                            </h3><br>
+                                            <p class="p14 text-light mt-1 m-0">TONIGHT  6:00PM</p>
+                                            <p class="p14 text-light mt-1 m-0"><i class="fas fa-map-marker-alt"></i> Ikeja GRA, Lagos</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card pd020" style="box-shadow: none">
-                                <div class="card-body" style="padding: 0px">
-                                    <div class="exrow">
-                                        <img class="align-self-center mr-3" style="width:40px; height:40px;" alt="" src="assets/img/calender.png">
-                                        <div class="media-body">
-                                            <label class="program-label">Spiritual Journey</label>
-                                            <h2 class="program-loc">Ikeja GRA, Lagos <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">6:00pm</span></h2>
-                                            <h2 class="program-loc color-primary">549 attendees<span class="blog-time">Edit</span></h2>
+                                <div *ngFor="let events of events" class="card pd020" style="box-shadow: none">
+                                    <div class="card-body" style="padding: 0px">
+                                        <div class="exrow">
+                                            <div class="align-self-center mr-3 calback">
+                                                <div class="calbackname">thursday</div>
+                                                <div class="callbackdate">9</div>
+                                            </div>
+                                            <div class="media-body">
+                                                <label class="program-label">{{events.title}}</label>
+                                                <h2 class="program-loc">{{events.venue}} <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">{{events.start_date | date: "h:mm a"}}</span></h2>
+                                                <h2 class="program-loc color-primary">{{events.attendance.length}} attendees<span class="blog-time" style="cursor: pointer">Edit</span></h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card pd020" style="box-shadow: none">
-                                <div class="card-body" style="padding: 0px">
-                                    <div class="exrow">
-                                        <img class="align-self-center mr-3" style="width:40px; height:40px;" alt="" src="assets/img/calender.png">
-                                        <div class="media-body">
-                                            <label class="program-label">Spiritual Journey</label>
-                                            <h2 class="program-loc">Ikeja GRA, Lagos <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">6:00pm</span></h2>
-                                            <h2 class="program-loc color-primary">549 attendees<span class="blog-time">Edit</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card pd020" style="box-shadow: none">
-                                <div class="card-body" style="padding: 0px">
-                                    <div class="exrow">
-                                        <img class="align-self-center mr-3" style="width:40px; height:40px;" alt="" src="assets/img/calender.png">
-                                        <div class="media-body">
-                                            <label class="program-label">Spiritual Journey</label>
-                                            <h2 class="program-loc">Ikeja GRA, Lagos <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">6:00pm</span></h2>
-                                            <h2 class="program-loc color-primary">549 attendees<span class="blog-time">Edit</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card pd020" style="box-shadow: none">
-                                <div class="card-body" style="padding: 0px">
-                                    <div class="exrow">
-                                        <img class="align-self-center mr-3" style="width:40px; height:40px;" alt="" src="assets/img/calender.png">
-                                        <div class="media-body">
-                                            <label class="program-label">Spiritual Journey</label>
-                                            <h2 class="program-loc">Ikeja GRA, Lagos <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">6:00pm</span></h2>
-                                            <h2 class="program-loc color-primary">549 attendees<span class="blog-time">Edit</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card pd020" style="box-shadow: none">
-                                <div class="card-body" style="padding: 0px">
-                                    <div class="exrow">
-                                        <img class="align-self-center mr-3" style="width:40px; height:40px;" alt="" src="assets/img/calender.png">
-                                        <div class="media-body">
-                                            <label class="program-label">Spiritual Journey</label>
-                                            <h2 class="program-loc">Ikeja GRA, Lagos <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">6:00pm</span></h2>
-                                            <h2 class="program-loc color-primary">549 attendees<span class="blog-time">Edit</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card pd020" style="box-shadow: none">
-                                <div class="card-body" style="padding: 0px">
-                                    <div class="exrow">
-                                        <img class="align-self-center mr-3" style="width:40px; height:40px;" alt="" src="assets/img/calender.png">
-                                        <div class="media-body">
-                                            <label class="program-label">Spiritual Journey</label>
-                                            <h2 class="program-loc">Ikeja GRA, Lagos <i class="fas fa-map-marker-alt"></i><span class="blog-time" style="color: #95989a">6:00pm</span></h2>
-                                            <h2 class="program-loc color-primary">549 attendees<span class="blog-time">Edit</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+
+                            <div class="card-body" *ngIf="!events">
+                                <div class="forspin">
+                                    <div class="spinner">
+                                        <div class="double-bounce1"></div>
+                                        <div class="double-bounce2"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ export class JwtInterceptor implements HttpInterceptor {
                 setHeaders: {
                     Authorization: `Bearer ${currentUser.token}`,
                     'x-api-key': `${root_url.xapikey}`,
-                    'Content-Type': `multipart/form-data`
+                    // 'Content-Type': `multipart/form-data`
                 }
             });
         } else {

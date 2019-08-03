@@ -290,7 +290,7 @@
                                                     <div class="exxrow giving-opt">
                                                         <h6>Giving Options</h6>
                                                     </div>
-                                                    <form [formGroup]="postForm" (ngSubmit)="onSubmit('postForm')">
+                                                    <form [formGroup]="postForm" >
                                                         <div class="row">
                                                         <div class="col-md-4 col-sm-6">
                                                                 <div class="form-group">
@@ -333,6 +333,10 @@
                                                                 <label class="message-label" >Branch name</label>
                                                                 <input type="text" class="message-textarea form-control" name="branch" formControlName="branch" [ngClass]="{ 'is-invalid': submitted && f.branch.errors }">
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label class="message-label" >Visible to Branch</label>
+                                                                <input type="text" class="message-textarea form-control" name="visiblebranch" formControlName="visible_to_branches" [ngClass]="{ 'is-invalid': submitted && f.visible_to_branches.errors }">
+                                                            </div>
                                                         </div>
 <!--                                                        <div class="col-4">-->
 <!--&lt;!&ndash;                                                                <div class="form-group">&ndash;&gt;-->
@@ -343,7 +347,7 @@
                                                     </div>
                                                         <div class="card-footer">
                                                             <div class=" form-group">
-                                                                <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
+                                                                <button type="button" class="message-btn" style="padding: 7px 25px !important;" (click)="onSubmit('postForm', $event)"><app-spinner *ngIf="loading"></app-spinner><span *ngIf="!loading">Submit</span></button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -417,8 +421,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                        </div>
+                            </div>
                             <div class="card-body" *ngIf="!post">
                                 <div class="forspin">
                                     <div class="spinner">

@@ -39,10 +39,14 @@ export class RequestsService {
     }
 
     getEvents() {
-        return this.http.get(`${root_url.apiUrl}event`);
+        return this.http.get(`${root_url.apiUrl}events`);
     }
 
     getGives() {
         return this.http.get(`${root_url.apiUrl}gives`);
+    }
+
+    getGiveType() {
+        return this.http.get(`${root_url.apiUrl}giveType`);
     }
 }

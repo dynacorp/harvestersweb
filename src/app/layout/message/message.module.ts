@@ -6,9 +6,10 @@ import { MessageRoutingModule } from './message-routing.module';
 import { MessageComponent } from './message.component';
 import { PageHeaderModule } from '../../shared';
 import {ReactiveFormsModule} from '@angular/forms';
+import {LayoutModule} from "../layout.module";
 
 @NgModule({
-    imports: [CommonModule, Ng2Charts, MessageRoutingModule, PageHeaderModule, ReactiveFormsModule],
+    imports: [CommonModule, Ng2Charts, MessageRoutingModule, PageHeaderModule, ReactiveFormsModule, LayoutModule],
     declarations: [MessageComponent]
 })
 export class MessageModule {}

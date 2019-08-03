@@ -10,6 +10,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-xl-12">
                                     <div class="card br-0">
+                                        <form [formGroup]="giveType" (ngSubmit)="onSubmit()">
                                         <div class="card-body user-section">
                                             <nav>
                                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -23,55 +24,66 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-5">
-                                                            <form>
                                                                 <div class="form-group">
                                                                     <label class="message-label" >Giving Type</label>
-                                                                    <input type="email" class="form-control message-textarea">
+                                                                    <input type="email" class="form-control message-textarea" formControlName="name" [ngClass]="{ 'is-invalid': submitted && v.name.errors }">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label class="message-label">Brief description/purpose of give (optional)</label>
-                                                                    <textarea class="form-control message-textarea" rows="7"></textarea>
+                                                                    <textarea class="form-control message-textarea" rows="7" formControlName="purpose" [ngClass]="{ 'is-invalid': submitted && v.purpose.errors }"></textarea>
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Donators Name </label>
-                                                                    <input type="email" class="form-control message-textarea">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Date</label>
-                                                                    <div class="input-group mb-2 message-textarea">
-                                                                        <div class="input-group-prepend">
-                                                                            <div class="input-group-text message-textarea"><i class="far fa-calendar-check color-primary"></i></div>
-                                                                        </div>
-                                                                        <input type="text" class="form-control message-textarea">
-                                                                    </div>
-                                                                </div>
+<!--                                                                <div class="form-group">-->
+<!--                                                                    <label class="message-label" >Amount (optional)</label>-->
+<!--                                                                    <div class="input-group mb-2 message-textarea">-->
+<!--                                                                        <div class="input-group-prepend">-->
+<!--                                                                            <div class="input-group-text message-textarea"><i class="far fa-credit-card color-primary"></i></div>-->
+<!--                                                                        </div>-->
+<!--                                                                        <input type="text" class="form-control message-textarea" formControlName="min_amount" [ngClass]="{ 'is-invalid': submitted && v.min_amount.errors }">-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
                                                                 <div class="form-group">
                                                                     <label class="message-label">Description</label>
-                                                                    <textarea class="form-control message-textarea" rows="7"></textarea>
+                                                                    <textarea class="form-control message-textarea" rows="7" formControlName="description" [ngClass]="{ 'is-invalid': submitted && v.description.errors }"></textarea>
                                                                 </div>
-                                                            </form>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <form>
-                                                                <div class="form-group">
-                                                                    <label class="message-label" >Amount (optional)</label>
-                                                                    <div class="input-group mb-2 message-textarea">
-                                                                        <div class="input-group-prepend">
-                                                                            <div class="input-group-text message-textarea"><i class="far fa-credit-card color-primary"></i></div>
-                                                                        </div>
-                                                                        <input type="text" class="form-control message-textarea">
-                                                                    </div>
-                                                                </div>
                                                                 <div class="form-group">
                                                                     <label class="message-label" >Target Amount (optional)</label>
                                                                     <div class="input-group mb-2 message-textarea">
                                                                         <div class="input-group-prepend">
                                                                             <div class="input-group-text message-textarea"><i class="far fa-credit-card color-primary"></i></div>
                                                                         </div>
-                                                                        <input type="text" class="form-control message-textarea">
+                                                                        <input type="text" class="form-control message-textarea" formControlName="fixed_amount" [ngClass]="{ 'is-invalid': submitted && v.fixed_amount.errors }">
                                                                     </div>
                                                                 </div>
-                                                            </form>
+                                                                <div class="exrow form-group">
+                                                                    <label class="message-label" >Whether or not givers can choose to be anonymous</label>
+                                                                    <div class="form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="true" name="allow_anonymous" formControlName="allow_anonymous">
+                                                                        <label class="form-check-label message-label" >True</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="false" name="allow_anonymous" formControlName="allow_anonymous">
+                                                                        <label class="form-check-label message-label" >False</label>
+                                                                    </div>
+                                                                    <div *ngIf="submitted && v.allow_anonymous.errors" class="invalid-feedback2">
+                                                                        <div *ngIf="v.allow_anonymous.errors.required">required</div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="exrow radio-group">
+                                                                    <label class="message-label" >Whether or not giveType is ready to be seen by users</label>
+                                                                    <div class="form-group form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="true" name="is_active" formControlName="is_active">
+                                                                        <label class="form-check-label message-label" >True</label>
+                                                                    </div>
+                                                                    <div class="form-group form-check">
+                                                                        <input type="radio" class="form-check-input message-textarea" value="false" name="is_active" formControlName="is_active">
+                                                                        <label class="form-check-label message-label" >False</label>
+                                                                    </div>
+                                                                    <div *ngIf="submitted && v.is_active.errors" class="invalid-feedback2">
+                                                                        <div *ngIf="v.is_active.errors.required">required</div>
+                                                                    </div>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -80,6 +92,7 @@
                                         <div class="card-footer">
                                             <button type="submit" class="message-btn" style="padding: 7px 25px !important;">Submit</button>
                                         </div>
+                                        </form>
                                     </div><!-- /.card -->
                                 </div>
 
@@ -112,11 +125,11 @@
                             </li>
                         </ul>
 
-                        <form class="frbody">
+                        <div class="frbody">
                             <div class="form-group mb0">
                                 <input type="email" class="form-control find-request" placeholder="Find Message">
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <div class="card">
                         <div style="height: 27em; overflow: scroll;">

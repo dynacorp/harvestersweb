@@ -5,6 +5,8 @@ import {first} from 'rxjs/operators';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NotifService} from '../../services/notif.service';
 import {PostService} from '../../services/post.service';
+import {HttpClient} from "@angular/common/http";
+import {root_url} from "../../const";
 
 @Component({
     selector: 'app-message',
@@ -23,14 +25,16 @@ export class MessageComponent implements OnInit {
     audiosubmitted = false;
     videosubmitted = false;
     post: any;
-    body: any;
+    body: any = [];
     nowmobile = true;
+    private branches: any;
 
     constructor(
         private formBuilder: FormBuilder,
         private request: RequestsService,
         private submitData: PostService,
-        private notif: NotifService) {
+        private notif: NotifService,
+        private http: HttpClient) {
         if (window.innerWidth <= 992 ) {
             this.nowmobile = false;
         }
@@ -54,7 +58,7 @@ export class MessageComponent implements OnInit {
             branch: ['', Validators.required],
             thumbnail: ['', Validators.required],
             church: ['', Validators.required],
-            // booktitle: ['', Validators.required],
+            // visible_to_branches: this.visiblebranch(),
         });
 
         this.bookForm = this.formBuilder.group({
@@ -95,15 +99,23 @@ export class MessageComponent implements OnInit {
     get a() { return this.audioForm.controls; }
     get v() { return this.videoForm.controls; }
 
-    onSubmit(e) {
+    visiblebranch () {
+        const q = this.branches.split(',');
+        return q;
+    }
+
+    onSubmit(e, event) {
         switch (e) {
             case 'postForm':
                 this.submitted = true;
                 if (this.postForm.invalid) {
                     return;
                 }
-                // console.log(this.postForm.value);
+                console.log(this.visiblebranch());
+                this.loading = true;
                 this.body = this.postForm.value;
+                // const body = this.body;
+                this.body = this.body.concat(this.visiblebranch());
                 break;
             case 'bookForm':
                 this.booksubmitted = true;
@@ -125,15 +137,30 @@ export class MessageComponent implements OnInit {
                 break;
         }
 
-        this.submitData.postForm(this.body)
+        // this.submitData.postForm(this.body)
+        //     // .pipe(first())
+        //     .subscribe(
+        //         data => {
+        //             console.log(data);
+        //         },
+        //         error => {
+        //             this.notif.show({message: error, type: 'error'});
+        //             this.loading = false;
+        //         });
+
+        this.http.post(`${root_url.apiUrl}post`, this.body)
             .pipe(first())
             .subscribe(
-                data => {
+                (data) => {
+                    event.preventDefault();
                     console.log(data);
+                    this.notif.show({message: data, type: 'success'});
+                    this.loading = false;
                 },
-                error => {
+                (error) => {
                     this.notif.show({message: error, type: 'error'});
                     this.loading = false;
+                    event.preventDefault();
                 });
     }
 }

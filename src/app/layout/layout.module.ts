@@ -8,6 +8,7 @@ import { LayoutComponent } from './layout.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SpinnerComponent} from './components/spinner/spinner.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         ReactiveFormsModule,
         FormsModule
     ],
-    declarations: [LayoutComponent, SidebarComponent, HeaderComponent]
+    exports: [
+        SpinnerComponent
+    ],
+    declarations: [LayoutComponent, SidebarComponent, HeaderComponent, SpinnerComponent]
 })
 export class LayoutModule {}
